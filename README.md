@@ -2,7 +2,7 @@
 
 **Neon Shift** is a fast-paced, sci-fi 2D platformer where gravity is your tool, not your limit. Built with Godot Engine 4.
 
-![Title Screen](screenshots/title_screen.png)
+
 
 ## 📸 Screenshots
 
