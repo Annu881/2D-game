@@ -1,0 +1,74 @@
+[gd_scene load_steps=7 format=3 uid="uid://level1_scene_uid"]
+
+[ext_resource type="PackedScene" uid="uid://player_scene_uid" path="res://scenes/Player.tscn" id="1_player"]
+[ext_resource type="PackedScene" uid="uid://hud_scene_uid" path="res://scenes/HUD.tscn" id="2_hud"]
+[ext_resource type="PackedScene" uid="uid://spike_scene_uid" path="res://scenes/Spike.tscn" id="3_spike"]
+[ext_resource type="PackedScene" uid="uid://coin_scene_uid" path="res://scenes/Coin.tscn" id="4_coin"]
+[ext_resource type="PackedScene" uid="uid://goal_scene_uid" path="res://scenes/Goal.tscn" id="5_goal"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_floor"]
+size = Vector2(1000, 40)
+
+[node name="Level1" type="Node2D"]
+
+[node name="HUD" parent="." instance=ExtResource("2_hud")]
+
+[node name="Floor" type="StaticBody2D" parent="."]
+position = Vector2(500, 600)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Floor"]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="ColorRect" type="ColorRect" parent="Floor"]
+offset_left = -500.0
+offset_top = -20.0
+offset_right = 500.0
+offset_bottom = 20.0
+color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="Ceiling" type="StaticBody2D" parent="."]
+position = Vector2(500, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Ceiling"]
+shape = SubResource("RectangleShape2D_floor")
+
+[node name="ColorRect" type="ColorRect" parent="Ceiling"]
+offset_left = -500.0
+offset_top = -20.0
+offset_right = 500.0
+offset_bottom = 20.0
+color = Color(0.2, 0.2, 0.2, 1)
+
+[node name="Platform1" type="StaticBody2D" parent="."]
+position = Vector2(800, 400)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Platform1"]
+shape = SubResource("RectangleShape2D_floor")
+one_way_collision = true
+
+[node name="ColorRect" type="ColorRect" parent="Platform1"]
+offset_left = -500.0
+offset_top = -20.0
+offset_right = 500.0
+offset_bottom = 20.0
+scale = Vector2(0.3, 1)
+color = Color(0.3, 0.3, 0.4, 1)
+
+[node name="Player" parent="." instance=ExtResource("1_player")]
+position = Vector2(100, 500)
+
+[node name="Spike" parent="." instance=ExtResource("3_spike")]
+position = Vector2(400, 560)
+
+[node name="Spike2" parent="." instance=ExtResource("3_spike")]
+position = Vector2(600, 40)
+rotation = 3.14159
+
+[node name="Coin" parent="." instance=ExtResource("4_coin")]
+position = Vector2(300, 450)
+
+[node name="Coin2" parent="." instance=ExtResource("4_coin")]
+position = Vector2(700, 150)
+
+[node name="Goal" parent="." instance=ExtResource("5_goal")]
+position = Vector2(900, 500)
